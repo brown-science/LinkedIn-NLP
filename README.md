@@ -5,24 +5,6 @@
 
 #### After completing my text analytics class, I realized the potential of the dataset I had generated, prompting me to reconnect with alumni. Six of them graciously permitted me to incorporate the notes from our discussions into a project. The analysis revealed three distinct clusters of conversation notes or documents and identified three topics using Latent Dirichlet Allocation (LDA). Furthermore, conducting sentiment analysis indicated consistently mid-high valence (positivity) across all documents, with a mean score of 5.99 on a scale of 1-9.
 
-
-```python
-import warnings
-warnings.filterwarnings('ignore')
-from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-data = pd.read_csv("data.csv") # Load data
-text = " ".join(doc for doc in data.notes)
-stopwords = set(STOPWORDS)
-wordcloud = WordCloud(stopwords=stopwords, background_color="white").generate(text)
-plt.imshow(wordcloud, interpolation='bilinear')
-plt.axis("off")
-plt.show()
-```
-
-
     
 ![png](main_files/main_1_0.png)
     
