@@ -5,8 +5,10 @@
 
 #### After completing my text analytics class, I realized the potential of the dataset I had generated, prompting me to reconnect with alumni. Six of them graciously permitted me to incorporate the notes from our discussions into a project. The analysis revealed three distinct clusters of conversation notes or documents and identified three topics using Latent Dirichlet Allocation (LDA). Furthermore, conducting sentiment analysis indicated consistently mid-high valence (positivity) across all documents, with a mean score of 5.99 on a scale of 1-9.
 
-    
-![png](main_files/main_1_0.png)
+<p align="center">
+ ![png](main_files/main_1_0.png)
+</p>   
+
     
 
 
