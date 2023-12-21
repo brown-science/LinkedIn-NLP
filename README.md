@@ -5,14 +5,14 @@
 
 #### After completing my text analytics class, I realized the potential of the dataset I had generated, prompting me to reconnect with alumni. Six of them graciously permitted me to incorporate the notes from our discussions into a project. The analysis revealed three distinct clusters of conversation notes or documents and identified three topics using Latent Dirichlet Allocation (LDA). Furthermore, conducting sentiment analysis indicated consistently mid-high valence (positivity) across all documents, with a mean score of 5.99 on a scale of 1-9.
 
-<p align="center">
+
  ![png](main_files/main_1_0.png)
-</p>   
+  
 
     
 
 
-I've recieved permission to use 6 documents of anonymyzed data from IAA alumni, I'll read in that data and do some EDA
+I've received permission to use 6 documents of anonymized data from IAA alumni, I'll read in that data and do some EDA
 
 
 ```python
@@ -100,7 +100,7 @@ for i in range(0, len(doc_strip_nlp) - 1):
         sim_mat[i][j] = doc_strip_nlp[i].similarity(doc_strip_nlp[j])
         sim_mat[j][i] = sim_mat[i][j]
 
-# Unsuprisingly, the documents are quite similar to eachother. 
+# Unsuprisingly, the documents are quite similar to each other. 
 labels = ["Doc 1", "Doc 2", "Doc 3", "Doc 4", "Doc 5", "Doc 6"]
 
 fig, ax = plt.subplots(figsize=(6,6))
@@ -119,7 +119,7 @@ plt.show()
     
 
 
-#### With the Similarity matrix, I can move on to clustering. I chose to go with K-Means clustering
+#### With the Similarity matrix, I can move on to clustering. I chose to go with K-Means clustering.
 
 I reduced the similarity matrix to 2 dimensions using principal component analysis (PCA) to improve visualization. I then created an elbow plot to determine an appropriate k for clustering. I decided to go with 3 clusters, and after comparing the clustering results with the similarity matrix, I found the dimensional reduction preserved the relationships well. As observed in the similarity matrix, document 4 is the most dissimilar from the rest and ends up in a cluster of its own. 
 
@@ -185,7 +185,7 @@ data["cluster"] = kmeans.labels_
     
 
 
-#### There are three distinct clusters. I'll perform topic analysis to understand what causes these clusters to seperate
+#### There are three distinct clusters. I'll perform topic analysis to understand what causes these clusters to separate
 
 Like with K-means clustering, topic modeling through LDA has a level of arbitrariness. In this case, k also must be chosen, but k is the number of topics you'd like to identify. Due to the small sample size and the fact that there are 3 document clusters, I chose to model 3 topics as well. LDA operates under the assumption that documents sharing similar topics contain similar sets of words, treating documents as probability distributions across latent topics. This means that each document has one topic with the highest probability. The top 5 words for each topic are listed below, and each topic has a similar but slightly different theme. Topic 0 focuses on technology, including Python, SQL, and Snowflake. In contrast, Topic 1 comprises data science methodologies, with a particular emphasis on machine learning. Topic 2, while somewhat diverse, revolves more around the broader spectrum of work life.
 
