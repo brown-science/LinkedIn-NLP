@@ -1,5 +1,5 @@
 # LinkedIn_NLP
-Using Python-based text analytics, this project aims to extract key sentiments and concepts from the advice given by alumni of my Master's program via LinkedIn.
+## Using text analytics, this project aims to extract key insights from the advice given by alumni of my Master's program via LinkedIn.
 
 #### Completing a Master of Science in Analytics from NC State's Institute for Advanced Analytics provides a wealth of knowledge and grants access to an extensive network of successful alumni, including data scientists, analysts, and engineers. Throughout the Summer and Fall semesters, conversations with alumni have unveiled several intriguing career paths. My interest in the pre-processing steps of data analysis led me to initiate informational interviews with data engineers, seeking insight and advice while taking notes.
 
