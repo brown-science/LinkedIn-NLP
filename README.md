@@ -185,7 +185,7 @@ data["cluster"] = kmeans.labels_
     
 
 
-#### There are three distinct clusters. I'll perform topic analysis to understand what causes these clusters to separate
+#### There are three distinct clusters. I'll perform topic analysis to understand what causes these clusters to separate.
 
 Like with K-means clustering, topic modeling through LDA has a level of arbitrariness. In this case, k also must be chosen, but k is the number of topics you'd like to identify. Due to the small sample size and the fact that there are 3 document clusters, I chose to model 3 topics as well. LDA operates under the assumption that documents sharing similar topics contain similar sets of words. Documents are treated as probability distributions across latent topics. This means that each document has one topic with the highest probability. The top 5 words for each topic are listed below, and each topic has a similar but slightly different theme. Topic 0 focuses on technology, including Python, SQL, and Snowflake. In contrast, Topic 1 comprises data science methodologies, with a particular emphasis on machine learning. Topic 2, while somewhat diverse, revolves more around the broader spectrum of work life.
 
