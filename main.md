@@ -289,7 +289,7 @@ data["topic"] = topic_list
 | 6 | 1 | 0 |
 
 
-The clusters separate partially according to topics; for instance, cluster 0 exclusively comprises documents with the highest probability for topic 0. However, this pattern does not hold for the remaining three documents, as their highest probability topics are a blend of topics 0 and 1. This analysis reveals that my discussions primarily centered around the technology and statistical techniques alumni employed rather than delving into their general work life (topic 2). In the future, I plan to inquire more about this specific topic to gain a more comprehensive perspective of their experiences. 
+The clusters separate partially according to topics. For instance, cluster 0 exclusively comprises documents with the highest probability for topic 0. However, this pattern does not hold for the remaining three documents, as their highest probability topics are a blend of topics 0 and 1. This analysis reveals that my discussions primarily centered around the technology and statistical techniques alumni employed rather than delving into their general work life (topic 2). In the future, I plan to inquire more about this specific topic to gain a more comprehensive perspective of their experiences. 
 
 #### Finally, I assessed the valence of each document and explored any potential associations between valence and clusters. I saw no substantial difference in valence among documents and found all of them had a moderate to high valence of around 6 on a scale from 1 to 9.
 
