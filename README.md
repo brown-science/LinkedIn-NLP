@@ -100,9 +100,9 @@ for i in range(0, len(doc_strip_nlp) - 1):
         sim_mat[i][j] = doc_strip_nlp[i].similarity(doc_strip_nlp[j])
         sim_mat[j][i] = sim_mat[i][j]
 
-# Unsuprisingly, the documents are quite similar to each other. 
 labels = ["Doc 1", "Doc 2", "Doc 3", "Doc 4", "Doc 5", "Doc 6"]
 
+# Matrix plot
 fig, ax = plt.subplots(figsize=(6,6))
 cax = ax.matshow(sim_mat, interpolation='nearest', cmap = "Greens")
 ax.grid(False)
@@ -110,7 +110,7 @@ plt.title('Document Similarity Matrix (Cosine Similarity)')
 plt.xticks(range(6), labels, rotation=90);
 plt.yticks(range(6), labels);
 fig.colorbar(cax, ticks=[.85,.90,.95,1])
-plt.show()
+plt.show() # Unsuprisingly, the documents are quite similar to eachother. 
 ```
 
 
