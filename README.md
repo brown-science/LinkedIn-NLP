@@ -6,9 +6,8 @@
 #### After completing my text analytics class, I realized the potential of the dataset I had generated, prompting me to reconnect with alumni. Six of them graciously permitted me to incorporate the notes from our discussions into a project. The analysis revealed three distinct clusters of conversation notes or documents and identified three topics using Latent Dirichlet Allocation (LDA). Furthermore, conducting sentiment analysis indicated consistently mid-high valence (positivity) across all documents, with a mean score of 5.99 on a scale of 1-9.
 
 
- ![png](main_files/main_1_0.png)
-  
 
+![png](main_files/main_1_0.png)
     
 
 
@@ -111,6 +110,7 @@ plt.xticks(range(6), labels, rotation=90);
 plt.yticks(range(6), labels);
 fig.colorbar(cax, ticks=[.85,.90,.95,1])
 plt.show() # Unsuprisingly, the documents are quite similar to eachother. 
+
 ```
 
 
@@ -119,7 +119,7 @@ plt.show() # Unsuprisingly, the documents are quite similar to eachother.
     
 
 
-#### With the Similarity matrix, I can move on to clustering. I chose to go with K-Means clustering.
+#### With the Similarity matrix, I can move on to clustering. I chose to go with K-Means clustering
 
 I reduced the similarity matrix to 2 dimensions using principal component analysis (PCA) to improve visualization. I then created an elbow plot to determine an appropriate k for clustering. I decided to go with 3 clusters, and after comparing the clustering results with the similarity matrix, I found the dimensional reduction preserved the relationships well. As observed in the similarity matrix, document 4 is the most dissimilar from the rest and ends up in a cluster of its own. 
 
@@ -158,7 +158,7 @@ p = sns.scatterplot(data=embeddings_2d, x=embeddings_2d[:,0],y=embeddings_2d[:,1
                 hue=kmeans.labels_, palette= "dark", alpha = .8, linewidth=0, edgecolor="none")
 
 for line in range(0, len(doc_labels)):
-    p.text(embeddings_2d[line][0] - 0.01, embeddings_2d[line][1] + 0.003, 
+    p.text(embeddings_2d[line][0] - 0.01, embeddings_2d[line][1] - 0.006, 
     doc_labels[line], horizontalalignment='left', 
     size='small', color='black')
 #data = embeddings_2d
@@ -187,7 +187,9 @@ data["cluster"] = kmeans.labels_
 
 #### There are three distinct clusters. I'll perform topic analysis to understand what causes these clusters to separate.
 
-Like with K-means clustering, topic modeling through LDA has a level of arbitrariness. In this case, k also must be chosen, but k is the number of topics you'd like to identify. Due to the small sample size and the fact that there are 3 document clusters, I chose to model 3 topics as well. LDA operates under the assumption that documents sharing similar topics contain similar sets of words. Documents are treated as probability distributions across latent topics. This means that each document has one topic with the highest probability. The top 5 words for each topic are listed below, and each topic has a similar but slightly different theme. Topic 0 focuses on technology, including Python, SQL, and Snowflake. In contrast, Topic 1 comprises data science methodologies, with a particular emphasis on machine learning. Topic 2, while somewhat diverse, revolves more around the broader spectrum of work life.
+Like K-means clustering, topic modeling through LDA has a level of arbitrariness. In this case, k also must be chosen, where k is the number of topics you'd like to identify. Due to the small sample size and the fact that there are 3 document clusters, I chose to model 3 topics as well. LDA operates under the assumption that documents sharing similar topics contain similar sets of words. Documents are treated as probability distributions across latent topics. This means that each document has one topic with the highest probability. The top 5 words for each topic are listed below, and each topic has a slightly different theme.
+ 
+Topic 0 focuses on technology, including "Engineering," "Python," and "SQL," while still sharing a common word with the other topics, "company." In contrast, Topics 1 and 2 comprise words covering the broader spectrum of work life. Topic 1 appears to emphasize securing a job, with the word "interview" appearing in the top 5. While Topic 2 includes the data platform "Snowflake." Despite these deviations, Topics 1 and 2 mainly focus on work life, with both containing the words "company," "job," and "work" in their top 5. 
 
 
 ```python
@@ -259,24 +261,24 @@ data["topic"] = topic_list
 ```
 
     Topic 0:
-       python (18.76%);  company (15.14%);  sql (12.98%);  best (12.91%);  snowflake (12.86%); 
+       engineering (32.99%);  python (10.89%);  company (10.77%);  best (7.51%);  sql (7.49%); 
     Topic 1:
-       machine (25.94%);  learning (25.90%);  company (15.11%);  science (10.00%);  companies (9.92%); 
+       company (23.76%);  job (14.23%);  science (14.16%);  interview (14.10%);  work (13.63%); 
     Topic 2:
-       companies (10.39%);  best (10.32%);  work (10.15%);  snowflake (10.02%);  python (9.98%); 
+       company (10.41%);  best (10.28%);  work (10.16%);  job (10.01%);  snowflake (9.98%); 
     
 
 | Document | Cluster | Topic |
 | --- | --- | --- |
 | 1 | 0 | 0 |
-| 2 | 1 | 1 |
+| 2 | 1 | 0 |
 | 3 | 0 | 0 |
 | 4 | 2 | 1 |
 | 5 | 0 | 0 |
 | 6 | 1 | 0 |
 
 
-The clusters separate partially according to topics. For instance, cluster 0 exclusively comprises documents with the highest probability for topic 0. However, this pattern does not hold for the remaining three documents, as their highest probability topics are a blend of topics 0 and 1. This analysis reveals that my discussions primarily centered around the technology and statistical techniques alumni employed rather than delving into their general work life (topic 2). In the future, I plan to inquire more about this specific topic to gain a more comprehensive perspective of their experiences. 
+I'm unable to discern if the cluster each document belongs to has any relationship with the highest probability topic. I need to increase the sample size to determine if any patterns are real and not just an artifact of the data. However, this analysis reveals that my discussions primarily centered around the technology alumni employed rather than delving into their general work life. Most documents' highest probability topic is topic 0, dominated by the words "engineering" and "Python." Topics 1 and 2 are dominated by words such as "company," "job," and "work." In future conversations, I plan to inquire more about these specific topics to gain a more comprehensive perspective of people's experiences. 
 
 #### Finally, I assessed the valence of each document and explored any potential associations between valence and clusters. I saw no substantial difference in valence among documents and found all of them had a moderate to high valence of around 6 on a scale from 1 to 9.
 
